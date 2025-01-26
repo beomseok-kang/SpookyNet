@@ -98,7 +98,7 @@ class InteractionModule(nn.Module):
         idx_j: torch.Tensor,
         num_batch: int,
         batch_seg: torch.Tensor,
-        mask: Optional[torch.Tensor] = None,
+        mask: Optional[torch.Tensor] = None
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         """
         Evaluate all modules in the block.

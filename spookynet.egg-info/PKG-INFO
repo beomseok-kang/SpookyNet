@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: spookynet
+Version: 1.0
+Summary: SpookyNet: Learning force fields with electronic degrees of freedom and nonlocal effects
+Home-page: https://github.com/OUnke/SpookyNet
+Author: Unke, O. T., Chmiela, S., Gastegger, M., Schütt, K. T., Sauceda, H. E., & Müller, K. R.
+License: MIT
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: ase>=3.22.1
+Requires-Dist: numpy>=1.21.6
+Requires-Dist: scikit-learn>=1.0.2
+Requires-Dist: torch>=1.11.0

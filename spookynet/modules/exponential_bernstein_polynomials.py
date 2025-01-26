@@ -70,7 +70,7 @@ class ExponentialBernsteinPolynomials(nn.Module):
         """ Initialize exponential scaling parameter alpha. """
         nn.init.constant_(self._alpha, softplus_inverse(self.ini_alpha))
 
-    def forward(self, r: torch.Tensor, cutoff_values: torch.Tensor) -> torch.Tensor:
+    def forward(self, r: torch.Tensor, cutoff_values: torch.Tensor, debug: bool = False) -> torch.Tensor:
         """
         Evaluates radial basis functions given distances and the corresponding
         values of a cutoff function.
@@ -87,6 +87,13 @@ class ExponentialBernsteinPolynomials(nn.Module):
             rbf (FloatTensor [N, num_basis_functions]):
                 Values of the radial basis functions for the distances r.
         """
+        if debug:
+            print("r: ", r)
+            print(torch.isnan(r).any())
+            print("r != 0?")
+            print(torch.all(r != 0.))
+            print(r.shape)
+            print(torch.where(r == 0.)[0])
         alphar = -F.softplus(self._alpha) * r.view(-1, 1)
         x = self.logc + self.n * alphar + self.v * torch.log(-torch.expm1(alphar))
         # x[torch.isnan(x)] = 0.0 #removes nan for r == 0, not necessary
